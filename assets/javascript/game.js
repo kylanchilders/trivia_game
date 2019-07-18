@@ -1,3 +1,5 @@
+$(document).ready(function(){
+
 var triviaQuestions = {
     q1: "Mt Baker is located in which state?",
     q2: "Which state is the sunshine state?",
@@ -41,6 +43,7 @@ var triviaAnswers = {
 var currentQuestion = "";
 var currentOptions = [];
 var currentAnswer = "";
+var userGuess = "";
 var questionNumber = 0;
 var numberRight = 0;
 var numberWrong = 0;
@@ -52,4 +55,42 @@ function startGame(){
     questionNumber = 1
     numberRight = 0
     numberWrong = 0
+    userGuess = ""
+    $('#number-right').html(numberRight)
+    $('#number-wrong').html(numberWrong)
+    $('#question-number').html(questionNumber)
+    $('#question').html(currentQuestion)
+    $('.option1').html(" " + currentOptions[0] + " ")
+    $('.option2').html(" " + currentOptions[1] + " ")
+    $('.option3').html(" " + currentOptions[2] + " ")
+    $('.option4').html(" " + currentOptions[3] + " ")
+    console.log(currentOptions[2])
 }
+
+function rightAnswer(){
+    numberRight++
+    questionNumber++
+    currentQuestion = triviaQuestions.q1
+    currentOptions = triviaOptions.q1
+    currentAnswer = triviaAnswers.q1
+    userGuess = ""
+}
+
+function wrongAnswer(){
+    numberWrong++
+    questionNumber++
+    currentQuestion = triviaQuestions.q1
+    currentOptions = triviaOptions.q1
+    currentAnswer = triviaAnswers.q1
+    userGuess = ""
+}
+
+$('#start-game').on('click', function() {
+    startGame()
+});
+
+$('#option1').on('click', function() {
+    
+});
+
+});
