@@ -72,6 +72,14 @@ function rightAnswer(){
     currentQuestion = triviaQuestions.q1
     currentOptions = triviaOptions.q1
     currentAnswer = triviaAnswers.q1
+    $('#number-right').html(numberRight)
+    $('#number-wrong').html(numberWrong)
+    $('#question-number').html(questionNumber)
+    $('#question').html(currentQuestion)
+    $('.option1').html(" " + currentOptions[0] + " ")
+    $('.option2').html(" " + currentOptions[1] + " ")
+    $('.option3').html(" " + currentOptions[2] + " ")
+    $('.option4').html(" " + currentOptions[3] + " ")
     userGuess = ""
 }
 
@@ -81,6 +89,14 @@ function wrongAnswer(){
     currentQuestion = triviaQuestions.q1
     currentOptions = triviaOptions.q1
     currentAnswer = triviaAnswers.q1
+    $('#number-right').html(numberRight)
+    $('#number-wrong').html(numberWrong)
+    $('#question-number').html(questionNumber)
+    $('#question').html(currentQuestion)
+    $('.option1').html(" " + currentOptions[0] + " ")
+    $('.option2').html(" " + currentOptions[1] + " ")
+    $('.option3').html(" " + currentOptions[2] + " ")
+    $('.option4').html(" " + currentOptions[3] + " ")
     userGuess = ""
 }
 
@@ -90,8 +106,6 @@ $('#start-game').on('click', function() {
 
 $('.option1').on('click', function() {
     userGuess = currentOptions[0]
-
-
 });
 
 $('.option2').on('click', function() {
@@ -104,6 +118,14 @@ $('.option3').on('click', function() {
 
 $('.option4').on('click', function() {
     userGuess = currentOptions[3]
+});
+
+$('#submit').on('click', function() {
+    if (userGuess == currentAnswer){
+        rightAnswer()
+    }else{
+        wrongAnswer()
+    }
 });
 
 });
