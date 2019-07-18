@@ -64,7 +64,6 @@ function startGame(){
     $('.option2').html(" " + currentOptions[1] + " ")
     $('.option3').html(" " + currentOptions[2] + " ")
     $('.option4').html(" " + currentOptions[3] + " ")
-    console.log(currentOptions[2])
 }
 
 function rightAnswer(){
@@ -89,8 +88,22 @@ $('#start-game').on('click', function() {
     startGame()
 });
 
-$('#option1').on('click', function() {
-    
+$('.option1').on('click', function() {
+    userGuess = currentOptions[0]
+
+
+});
+
+$('.option2').on('click', function() {
+    userGuess = currentOptions[1]
+});
+
+$('.option3').on('click', function() {
+    userGuess = currentOptions[2]
+});
+
+$('.option4').on('click', function() {
+    userGuess = currentOptions[3]
 });
 
 });
