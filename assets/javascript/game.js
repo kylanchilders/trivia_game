@@ -37,6 +37,19 @@ var triviaAnswers = {
     q10: "Vermont"
 }
 
+
+var currentQuestion = "";
+var currentOptions = [];
+var currentAnswer = "";
 var questionNumber = 0;
 var numberRight = 0;
 var numberWrong = 0;
+
+function startGame(){
+    currentQuestion = triviaQuestions.q1
+    currentOptions = triviaOptions.q1
+    currentAnswer = triviaAnswers.q1
+    questionNumber = 1
+    numberRight = 0
+    numberWrong = 0
+}
