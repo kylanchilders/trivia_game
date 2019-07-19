@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>US State Trivia</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,7 +11,7 @@
   </head>
   <body>
 
-    <h1>Trivia Game</h1>
+    <h1>US State Trivia Game</h1>
     <br>
     <button id="start-game">Start Game</button>
     <br>
@@ -19,7 +19,7 @@
     <h3>Right Answers: <span id="number-right"></span></h3>
     <h3>Wrong Answers: <span id="number-wrong"></span></h3>
     <br>
-    <h3>Question <span id="question-number"></span> :</h3>
+    <h3>Question <span id="question-number">0</span> / 10</h3>
     <br>
     <form>
         <h2 id="question"></h2>
@@ -29,10 +29,12 @@
         <input type="radio" class="option4" name="answers"><label for="option4" class="option4"></label>
         <br>
         <br>
-        <input type="submit" id="submit">
-
-
     </form>
+      
+    <button id="submit">Submit</button>
+
+
+    
 
       
     <!-- Optional JavaScript -->

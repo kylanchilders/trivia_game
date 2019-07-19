@@ -48,6 +48,7 @@ var questionNumber = 0;
 var numberRight = 0;
 var numberWrong = 0;
 
+
 function startGame(){
     currentQuestion = triviaQuestions.q1
     currentOptions = triviaOptions.q1
@@ -64,14 +65,15 @@ function startGame(){
     $('.option2').html(" " + currentOptions[1] + " ")
     $('.option3').html(" " + currentOptions[2] + " ")
     $('.option4').html(" " + currentOptions[3] + " ")
+    $('input[name=answers]').prop('checked',false);
 }
 
 function rightAnswer(){
     numberRight++
     questionNumber++
-    currentQuestion = triviaQuestions.q1
-    currentOptions = triviaOptions.q1
-    currentAnswer = triviaAnswers.q1
+    currentQuestion = triviaQuestions.q2
+    currentOptions = triviaOptions.q2
+    currentAnswer = triviaAnswers.q2
     $('#number-right').html(numberRight)
     $('#number-wrong').html(numberWrong)
     $('#question-number').html(questionNumber)
@@ -80,15 +82,16 @@ function rightAnswer(){
     $('.option2').html(" " + currentOptions[1] + " ")
     $('.option3').html(" " + currentOptions[2] + " ")
     $('.option4').html(" " + currentOptions[3] + " ")
+    $('input[name=answers]').prop('checked',false);
     userGuess = ""
 }
 
 function wrongAnswer(){
     numberWrong++
     questionNumber++
-    currentQuestion = triviaQuestions.q1
-    currentOptions = triviaOptions.q1
-    currentAnswer = triviaAnswers.q1
+    currentQuestion = triviaQuestions.q2
+    currentOptions = triviaOptions.q2
+    currentAnswer = triviaAnswers.q2
     $('#number-right').html(numberRight)
     $('#number-wrong').html(numberWrong)
     $('#question-number').html(questionNumber)
@@ -97,6 +100,7 @@ function wrongAnswer(){
     $('.option2').html(" " + currentOptions[1] + " ")
     $('.option3').html(" " + currentOptions[2] + " ")
     $('.option4').html(" " + currentOptions[3] + " ")
+    $('input[name=answers]').prop('checked',false);
     userGuess = ""
 }
 
