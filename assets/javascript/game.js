@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+//Declaring Object of Trivia Questions
 var triviaQuestions = {
     q1: "Mt Baker is located in which state?",
     q2: "Which state is the sunshine state?",
@@ -13,6 +14,7 @@ var triviaQuestions = {
     q10: "Which state gets the most snowfall"
 }
 
+//Declaring Object of Trivia options of answers
 var triviaOptions = {
     q1: ["Oregon", "California", "Washington", "Hawaii"],
     q2: ["California", "Florida", "Texas", "Arizona"],
@@ -26,6 +28,7 @@ var triviaOptions = {
     q10: ["Maine", "Alaska", "Colorado", "Vermont"]
 }
 
+//Declaring Object of Trivia correct answers
 var triviaAnswers = {
     q1: "Washington",
     q2: "Florida",
@@ -39,24 +42,30 @@ var triviaAnswers = {
     q10: "Vermont"
 }
 
-
+//Setting our other variables
 var currentQuestion = "";
 var currentOptions = [];
 var currentAnswer = "";
-var userGuess = "";
+var userGuess = "empty";
 var questionNumber = 0;
 var numberRight = 0;
 var numberWrong = 0;
+var i = 0;
+var j = 0;
+var k = 0;
 
-
+//Function to initialize game, setting up the first question and answers and printing them to the HTML
 function startGame(){
-    currentQuestion = triviaQuestions.q1
-    currentOptions = triviaOptions.q1
-    currentAnswer = triviaAnswers.q1
+    i = 0
+    j = 0;
+    k = 0;
+    currentQuestion = Object.values(triviaQuestions)[i]
+    currentOptions = Object.values(triviaOptions)[j]
+    currentAnswer = Object.values(triviaAnswers)[k]
     questionNumber = 1
     numberRight = 0
     numberWrong = 0
-    userGuess = ""
+    userGuess = "empty"
     $('#number-right').html(numberRight)
     $('#number-wrong').html(numberWrong)
     $('#question-number').html(questionNumber)
@@ -68,12 +77,16 @@ function startGame(){
     $('input[name=answers]').prop('checked',false);
 }
 
+//Function when an answer is right to increment the question and answer indexes to display the next question, increment correct answers, and print to HTML
 function rightAnswer(){
     numberRight++
     questionNumber++
-    currentQuestion = triviaQuestions.q2
-    currentOptions = triviaOptions.q2
-    currentAnswer = triviaAnswers.q2
+    i++
+    j++
+    k++
+    currentQuestion = Object.values(triviaQuestions)[i]
+    currentOptions = Object.values(triviaOptions)[j]
+    currentAnswer = Object.values(triviaAnswers)[k]
     $('#number-right').html(numberRight)
     $('#number-wrong').html(numberWrong)
     $('#question-number').html(questionNumber)
@@ -83,15 +96,19 @@ function rightAnswer(){
     $('.option3').html(" " + currentOptions[2] + " ")
     $('.option4').html(" " + currentOptions[3] + " ")
     $('input[name=answers]').prop('checked',false);
-    userGuess = ""
+    userGuess = "empty"
 }
 
+//Function when an answer is wrong to increment the question and answer indexes to display the next question, increment incorrect answers, and print to HTML
 function wrongAnswer(){
     numberWrong++
     questionNumber++
-    currentQuestion = triviaQuestions.q2
-    currentOptions = triviaOptions.q2
-    currentAnswer = triviaAnswers.q2
+    i++
+    j++
+    k++
+    currentQuestion = Object.values(triviaQuestions)[i]
+    currentOptions = Object.values(triviaOptions)[j]
+    currentAnswer = Object.values(triviaAnswers)[k]
     $('#number-right').html(numberRight)
     $('#number-wrong').html(numberWrong)
     $('#question-number').html(questionNumber)
@@ -101,9 +118,11 @@ function wrongAnswer(){
     $('.option3').html(" " + currentOptions[2] + " ")
     $('.option4').html(" " + currentOptions[3] + " ")
     $('input[name=answers]').prop('checked',false);
-    userGuess = ""
+    userGuess = "empty"
 }
 
+
+//onclick functions for each button in the interface
 $('#start-game').on('click', function() {
     startGame()
 });
@@ -124,12 +143,22 @@ $('.option4').on('click', function() {
     userGuess = currentOptions[3]
 });
 
+
+//Submit button if conditions and functions. If there are still questions left, it will call functions to move to the next question in the event of a right or wrong answer. If user guess is empty it will alert users. If no more questions yet displays game over.
 $('#submit').on('click', function() {
-    if (userGuess == currentAnswer){
+    console.log("user guess = " + userGuess)
+    if (userGuess == currentAnswer && questionNumber < 10){
         rightAnswer()
-    }else{
+    }else if (userGuess === "empty"){
+        alert("Please select an Answer!")
+    }else if (userGuess != currentAnswer && questionNumber < 10){
         wrongAnswer()
+    }else{
+        alert("Game Over!")
+        alert("You answered " + numberRight + " out of 10 correctly!")
+        startGame()
     }
+
 });
 
 });
