@@ -53,10 +53,37 @@ var numberWrong = 0;
 var i = 0;
 var j = 0;
 var k = 0;
+var number = 2;
+var intervalId;
+
+
+//function to set timer
+function run() {
+    number = 2;
+    clearInterval(intervalId);
+    intervalId = setInterval(decrement, 1000);
+}
+
+//function to start decrementing timer. If timer hits 0 then wrongAnswer function is called and then timer is reset using function to set timer
+function decrement() {
+    number--;
+    $("#timer").html(number);
+    if (number === 0) {
+        stop();
+        alert("Times Up!");
+        wrongAnswer();
+        run();
+    }
+}
+
+//function to stop timer
+function stop() {
+    clearInterval(intervalId);
+}
 
 //Function to initialize game, setting up the first question and answers and printing them to the HTML
 function startGame(){
-    i = 0
+    i = 0;
     j = 0;
     k = 0;
     currentQuestion = Object.values(triviaQuestions)[i]
@@ -125,6 +152,8 @@ function wrongAnswer(){
 //onclick functions for each button in the interface
 $('#start-game').on('click', function() {
     startGame()
+    run()
+    decrement()
 });
 
 $('.option1').on('click', function() {
@@ -149,11 +178,16 @@ $('#submit').on('click', function() {
     console.log("user guess = " + userGuess)
     if (userGuess == currentAnswer && questionNumber < 10){
         rightAnswer()
+        run()
+        decrement()
     }else if (userGuess === "empty"){
         alert("Please select an Answer!")
     }else if (userGuess != currentAnswer && questionNumber < 10){
         wrongAnswer()
+        run()
+        decrement()
     }else{
+        stop()
         alert("Game Over!")
         alert("You answered " + numberRight + " out of 10 correctly!")
         startGame()
