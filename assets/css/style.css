@@ -1,0 +1,12 @@
+body {
+    background-image: url("../images/millionaire.jpg");
+    background-size: cover;
+}
+
+h2, h3, label {
+    color: white;
+}
+
+#timer, h1 {
+    color:yellow;
+}

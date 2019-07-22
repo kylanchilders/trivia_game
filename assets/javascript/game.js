@@ -44,7 +44,7 @@ var triviaAnswers = {
 
 //Setting our other variables
 var currentQuestion = "";
-var currentOptions = [];
+var currentOptions
 var currentAnswer = "";
 var userGuess = "empty";
 var questionNumber = 0;
